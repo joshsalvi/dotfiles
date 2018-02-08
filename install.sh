@@ -36,7 +36,7 @@ curl -L git.io/antigen > antigen.zsh && mv antigen.zsh $HOME/.dotfiles/bin/antig
 echo "Installing dependencies..."
 pip3 install pygments
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
   powerlevelfile=".powerlevelrc_osx"
 else
   powerlevelfile=".powerlevelrc"

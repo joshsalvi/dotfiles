@@ -8,7 +8,7 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status disk_usage root_indicator ram load ip battery time)
 else
   POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir virtualenv vcs)
-  if [ "$USER" == "root" ]; then
+  if [ "$USER" = "root" ]; then
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status disk_usage root_indicator ram load battery time)
   else
   POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator battery custom_now_playing time)
