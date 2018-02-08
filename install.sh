@@ -24,22 +24,22 @@ for bin in ${bins[@]}; do
 done
 
 echo "Cloning and installing .nanorc files from github..."
-git clone https://github.com/nanorc/nanorc tmp/nanorc
-cd tmp/nanorc
+git clone https://github.com/nanorc/nanorc nanofiles
+cd nanofiles
 make install
 cd ..
+rm -rf nanofiles
 
 echo "Downloading antigen for zsh..."
-curl -L git.io/antigen > tmp/antigen.zsh
-mv tmp/antigen.zsh $HOME/.dotfiles/bin/antigen.zsh
+curl -L git.io/antigen > antigen.zsh
+mv antigen.zsh $HOME/.dotfiles/bin/antigen.zsh
 
 
 echo "Installing dependencies..."
 pip3 install pygments
 
-if [$(uname) = "Darwin"]; then
+if [ "$(uname)" == "Darwin" ]; then
  $powerlevelfile=".powerlevelrc_osx"
-
 else
 	$powerlevelfile=".powerlevelrc"
 fi
@@ -50,6 +50,6 @@ fi
 	fi
 	ln -s $HOME/.dotfiles/.powerlevelrc $HOME/.powerlevelrc
 
-rm -rf tmp/
+rm -rf tmp
 echo "Done!"
 echo "Existing files moved to $HOME/.dotfiles/backup"
