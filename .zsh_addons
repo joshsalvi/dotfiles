@@ -1,4 +1,18 @@
-alias ll='ls -lispa'
+# if exa is installed, use exa instead of ls
+if [ "$(which exa)" = "exa not found" ]; then
+  alias l='ls -lah'
+  alias la='ls -lAh'
+  alias ls='ls -G'
+  alias lsa='ls -lah'
+  alias ll='ls -lispa'
+else
+  alias ll='exa -laahF@ --git'
+  alias l='exa -lah --git'
+  alias la='exa -laah --git'
+  alias ls='exa'
+  alias lsa='exa -lah --git'
+fi
+
 alias cat='pygmentize -O style=monokai -f console256 -g'
 alias e='$EDITOR'
 
