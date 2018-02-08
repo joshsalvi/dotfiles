@@ -30,8 +30,7 @@ cd ..
 rm -rf nanofiles
 
 echo "Downloading antigen for zsh..."
-curl -L git.io/antigen > antigen.zsh
-mv antigen.zsh $HOME/.dotfiles/bin/antigen.zsh
+curl -L git.io/antigen > antigen.zsh && mv antigen.zsh $HOME/.dotfiles/bin/antigen.zsh
 
 
 echo "Installing dependencies..."
