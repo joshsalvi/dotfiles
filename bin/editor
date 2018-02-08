@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/usr/bin/zsh
 if [ "$(which atom)" = "atom not found" ]; then
+  echo "$@ \uF061 \uF0AD"
   nano -- "$@"
 else
+  echo "$@ \uF061 \uE764"
   $(which atom) -nw -- "$@"
 fi
