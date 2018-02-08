@@ -2,5 +2,5 @@
 if [ "$(uname)" = "Darwin" ]; then
 echo "\uF001 $(osascript -e 'tell application "iTunes" to if player state is playing then artist of current track & " - " & name of current track')"
 else
-echo "$(~/.dotfiles/bin/sp current | sed '3q;d' | awk '{$1=""; print $0}' | sed 's/^ *//g' | sed 's/ *$//g') - $(~/.dotfiles/bin/sp current | sed '4q;d' | awk '{$1=""; print $0}' | sed 's/^ *//g' | sed 's/ *$//g')"
+echo "\uF001 $(~/.dotfiles/bin/sp current | sed '3q;d' | awk '{$1=""; print $0}' | sed 's/^ *//g' | sed 's/ *$//g') - $(~/.dotfiles/bin/sp current | sed '4q;d' | awk '{$1=""; print $0}' | sed 's/^ *//g' | sed 's/ *$//g')"
 fi
