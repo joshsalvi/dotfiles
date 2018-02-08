@@ -1,6 +1,6 @@
 #! /bin/bash
 
-files=( ".zsh_addons" ".zshrc" ".nanorc")
+files=( ".zsh_addons" ".zshrc" ".nanorc" ".powerlevelrc" )
 bins=( "editor" "nowplaying" )
 
 
@@ -35,21 +35,8 @@ curl -L git.io/antigen > antigen.zsh && mv antigen.zsh $HOME/.dotfiles/bin/antig
 
 echo "Installing dependencies..."
 pip3 install pygments --user
+wget -O $HOME/.dotfiles/bin/sp https://gist.githubusercontent.com/wandernauta/6800547/raw/2c2ad0f3849b1b1cd1116b80718d986f1c1e7966/sp
+chmod +x $HOME/.dotfiles/bin/sp
 
-if [ "$(uname)" = "Darwin" ]; then
-  powerlevelfile=".powerlevelrc_osx"
-else
-  powerlevelfile=".powerlevelrc"
-fi
-wget -O ~/.dotfiles/bin/sp https://gist.githubusercontent.com/wandernauta/6800547/raw/2c2ad0f3849b1b1cd1116b80718d986f1c1e7966/sp
-chmod +x ~/.dotfiles/bin/sp
-
-cp $powerlevelfile "$HOME/.dotfiles/.powerlevelrc"
-if [ ! -L $HOME/$file ]; then
-  mv $HOME/.powerlevelrc $HOME/.dotfiles/backup/.powerlevelrc
-fi
-ln -s $HOME/.dotfiles/.powerlevelrc $HOME/.powerlevelrc
-
-rm -rf tmp
 echo "Done!"
 echo "Existing files moved to $HOME/.dotfiles/backup"

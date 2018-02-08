@@ -11,7 +11,7 @@ else
   if [ "$USER" = "root" ]; then
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status disk_usage root_indicator ram load battery time)
   else
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator battery time)
+  POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator battery custom_now_playing time)
   fi
 fi
 
@@ -24,6 +24,10 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 #POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰\uF460\uF460\uF460 "
+
+# Custom segment "now playing"
+POWERLEVEL9K_CUSTOM_NOW_PLAYING='~/.dotfiles/bin/nowplaying'
+POWERLEVEL9K_CUSTOM_NOW_PLAYING_BACKGROUND='blue'
 
 # Colors
 POWERLEVEL9K_VIRTUALENV_BACKGROUND=107

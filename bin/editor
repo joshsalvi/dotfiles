@@ -1,2 +1,6 @@
 #!/bin/sh
-/usr/local/bin/atom -nw -- "$@"
+if [ "$(which atom)" = "atom not found" ]; then
+  nano -- "$@"
+else
+  $(which atom) -nw -- "$@"
+fi
