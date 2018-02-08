@@ -6,3 +6,5 @@ Automatically installs:
 - pygments via pip3  
 
 .zshrc also installs parts from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and the [powerlevel9k theme](https://github.com/bhilburn/powerlevel9k) 
+
+I recommend the oceanic theme preset from [materialshell](https://github.com/carloscuesta/materialshell) for Terminal.app on OSX
