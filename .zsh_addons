@@ -16,7 +16,7 @@ fi
 alias cat='pygmentize -O style=monokai -f console256 -g'
 alias e='$EDITOR'
 
-export EDITOR=~/dotfiles/bin/editor
+export EDITOR=~/.dotfiles/bin/editor
 
 function venv(){
 	source ~/.venv/$1/bin/activate
