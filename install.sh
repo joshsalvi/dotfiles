@@ -35,8 +35,10 @@ curl -L git.io/antigen > antigen.zsh && mv antigen.zsh $HOME/.dotfiles/bin/antig
 
 echo "Installing dependencies..."
 pip3 install pygments --user
+if [ "$(uname)" = "Linux" ]; then
 wget -O $HOME/.dotfiles/bin/sp https://gist.githubusercontent.com/wandernauta/6800547/raw/2c2ad0f3849b1b1cd1116b80718d986f1c1e7966/sp
 chmod +x $HOME/.dotfiles/bin/sp
+fi
 
 echo "Done!"
 echo "Existing files moved to $HOME/.dotfiles/backup"
