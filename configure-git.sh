@@ -1,6 +1,6 @@
 #!/bin/sh
 git config --global user.name "Tim Otlik"
-git config --global user.email "t.otli@vivaldi.net"
+git config --global user.email "t.otlik@vivaldi.net"
 git config --global core.autocrlf input
 git config --global core.editor nano
 git config --global alias.br branch
