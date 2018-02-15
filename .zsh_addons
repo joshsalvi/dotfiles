@@ -16,8 +16,13 @@ fi
 alias cat='pygmentize -O style=monokai -f console256 -g'
 alias e='$EDITOR'
 
-export EDITOR=~/.dotfiles/bin/editor
+alias pyt='python -m pytest tests'
+alias pytc='python -m pytest tests --cov=.'
+alias pytcr='python -m pytest tests --cov=. --cov-report=html'
 
 function venv(){
 	source ~/.venv/$1/bin/activate
 }
+
+export EDITOR=~/.dotfiles/bin/editor
+export GPG_TTY=$(tty)

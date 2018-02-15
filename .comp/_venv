@@ -1,0 +1,11 @@
+#compdef venv
+
+_venv(){
+_arguments \
+    '1: :->python_venv'
+
+case $state in
+  (python_venv) _arguments '1:profiles:($(ls ~/.venv))'
+esac
+}
+_venv "$@"
