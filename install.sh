@@ -1,3 +1,4 @@
+#!/bin/bash
 files=( ".zsh_addons" ".zshrc" ".nanorc" ".powerlevelrc" )
 bins=( "editor" "nowplaying" )
 completions=( "_venv" )
@@ -34,11 +35,19 @@ for completion in ${completions[@]}; do
   chmod +x $HOME/.dotfiles/.comp/$completion
 done
 
+
+echo "\n\e[32m$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -) \e[39m\n"
+
+if [ `uname` = "Linux" ]; then
+  echo "Installation of libsecret-1-dev needed, sudo is necessary..."
+  sudo apt update
+  sudo apt install libsecret-1-dev curl -y
+fi
 echo "Installing dependencies..."
 
 pip3 install pygments --user
-if [ "$(uname)" = "Linux" ]; then
-  wget -O $HOME/.dotfiles/bin/sp https://gist.githubusercontent.com/wandernauta/6800547/raw/2c2ad0f3849b1b1cd1116b80718d986f1c1e7966/sp
+if [ `uname` = "Linux" ]; then
+  curl -L https://gist.githubusercontent.com/wandernauta/6800547/raw/2c2ad0f3849b1b1cd1116b80718d986f1c1e7966/sp -o $HOME/.dotfiles/bin/sp
   chmod +x $HOME/.dotfiles/bin/sp
 
   mkdir ~/local
@@ -48,24 +57,19 @@ if [ "$(uname)" = "Linux" ]; then
   ./configure --prefix=~/local
   make install # ok, fine, this step probably takes more than 30 seconds...
   curl https://www.npmjs.org/install.sh | sh
-elif [ "$(uname)" = "Darwin" ]; then
+elif [ `uname` = "Darwin" ]; then
   brew install node
 fi
 
-if [ "$(which wget)"="wget not found" ]; then
-  curl -L "git.io/antigen" -o $HOME/.dotfiles/bin/antigen.zsh && chmod +x $HOME/.dotfiles/bin/antigen.zsh
-  curl -o- "https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh" | bash
-else
-  wget -L "git.io/antigen" -O antigen.zsh && chmod +x antigen.zsh && mv antigen.zsh $HOME/.dotfiles/bin/antigen.zsh
-  wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-fi
+curl -L "git.io/antigen" -o $HOME/.dotfiles/bin/antigen.zsh && chmod +x $HOME/.dotfiles/bin/antigen.zsh
+curl -o- "https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh" | bash
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 nvm install node
 npm install -g commitizen cz-conventional-changelog
-echo "\n\e[32m$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -) \e[39m\n" 
+printf "\n\e[32m$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -) \e[39m\n"
 echo "Done!"
-echo "Existing files moved to $HOME/.dotfiles/backup"
+printf "Existing files moved to \e[32m$HOME/.dotfiles/backup\e[30m\n"
 echo "Please restart your shell now"
