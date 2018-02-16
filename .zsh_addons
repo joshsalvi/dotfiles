@@ -26,3 +26,4 @@ function venv(){
 
 export EDITOR=~/.dotfiles/bin/editor
 export GPG_TTY=$(tty)
+export PATH=$HOME/local/bin:$PATH
