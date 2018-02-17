@@ -73,7 +73,7 @@ if [ -d `nvm --version` ]; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   nvm install node
-  npm install -g commitizen cz-conventional-changelog
+  npm install -g commitizen cz-conventional-changelog npm-check-updates
 fi
 
 
