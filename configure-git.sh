@@ -7,6 +7,7 @@ git config --global alias.br branch
 git config --global alias.st status
 git config --global alias.sd "stash drop"
 git config --global alias.sc "stash clear"
+git config --global alias.clg "\!f() { git clone ssh://git@github.com/\"\$1\" \"\${@:2}\"; }; f"
 
 gpg_id=$(gpg --list-secret-keys --keyid-format LONG | grep sec | grep -Eo '(/[A-Z0-9]*)\s' | cut -d "/" -f 2)
 if [ "$gpg_id" ]; then
