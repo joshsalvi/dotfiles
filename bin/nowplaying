@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ "$(uname)"="Darwin" ]; then
+if [ `uname` = "Darwin" ]; then
   track="$(osascript -e 'tell application "iTunes" to if player state is playing then artist of current track & " - " & name of current track')"
   if [ "$track" ]; then
     echo "\uF001 $track"
