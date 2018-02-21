@@ -1,18 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 files=( ".zsh_addons" ".zshrc" ".nanorc" ".powerlevelrc" )
-bins=( "editor" "nowplaying" )
+bins=( "editor" "nowplaying" "github_issues" )
 completions=( "_venv" )
+scripts=( ".autoenv.zsh" ".autoenv_leave.zsh" )
 
 
-mkdir -p $HOME/.dotfiles/bin $HOME/.dotfiles/backup $HOME/.dotfiles/.comp
+mkdir -p $HOME/.dotfiles/bin $HOME/.dotfiles/backup $HOME/.dotfiles/.comp $HOME/.dotfiles/scripts
 
+if [ -d ~/.nanorc ]; then
 echo "Cloning and installing .nanorc files from github..."
 git clone https://github.com/nanorc/nanorc nanofiles
 cd nanofiles
 make install
 cd ..
 rm -rf nanofiles
-
+fi
 
 echo "Copying files..."
 for file in ${files[@]}; do
@@ -35,40 +37,43 @@ for completion in ${completions[@]}; do
     chmod +x $HOME/.dotfiles/.comp/$completion
 done
 
+echo "Copying scripts..."
+for script in ${scripts[@]}; do
+    cp scripts/$script $HOME/.dotfiles/scripts/$script
+    chmod +x $HOME/.dotfiles/scripts/$script
+done
 
-echo "\n\e[32m$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -) \e[39m\n"
 
 if [ `uname` = "Linux" ]; then
   echo "Installation of libsecret-1-dev needed, sudo is necessary..."
-  sudo apt update
-  sudo apt install libsecret-1-dev curl -y
+  sudo apt update -qq
+  sudo apt install libsecret-1-dev curl python-pygments -y -qq
 fi
 echo "Installing dependencies..."
 
-pip3 install pygments --user
 if [ `uname` = "Linux" ]; then
-  curl -L https://gist.githubusercontent.com/wandernauta/6800547/raw/2c2ad0f3849b1b1cd1116b80718d986f1c1e7966/sp -o $HOME/.dotfiles/bin/sp
+  curl -sL https://gist.githubusercontent.com/wandernauta/6800547/raw/2c2ad0f3849b1b1cd1116b80718d986f1c1e7966/sp -o $HOME/.dotfiles/bin/sp
   chmod +x $HOME/.dotfiles/bin/sp
-  if [ -d `node --version` ]; then
+  if [ -z `node --version` ]; then
     mkdir ~/local
     mkdir ~/node-latest-install
     cd ~/node-latest-install
-    curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
+    curl -s http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
     ./configure --prefix=~/local
     make install # ok, fine, this step probably takes more than 30 seconds...
     curl https://www.npmjs.org/install.sh | sh
   fi
 elif [ `uname` = "Darwin" ]; then
-  if [ -d `node --version` ]; then
-  brew install node
+  if [ -z `node --version` ]; then
+    brew install node
   fi
 fi
 
-fi
 if [ ! -f $HOME/.dotfiles/bin/antigen.zsh ]; then
-curl -L "git.io/antigen" -o $HOME/.dotfiles/bin/antigen.zsh && chmod +x $HOME/.dotfiles/bin/antigen.zsh
+  curl -sL "git.io/antigen" -o $HOME/.dotfiles/bin/antigen.zsh && chmod +x $HOME/.dotfiles/bin/antigen.zsh
+fi
 
-if [ -d `nvm --version` ]; then
+if [ ! -d $NVM_DIR ]; then
   curl -o- "https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh" | bash
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -77,7 +82,5 @@ if [ -d `nvm --version` ]; then
 fi
 
 
-printf "\n\e[32m$(printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -) \e[39m\n"
 echo "Done!"
-printf "Existing files moved to \e[32m$HOME/.dotfiles/backup\e[30m\n"
 echo "Please restart your shell now"

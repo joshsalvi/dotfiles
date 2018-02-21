@@ -1,13 +1,13 @@
 # General config
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/sambadevi/powerlevel9k
 
 # Prompts
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh context dir virtualenv vcs)
   POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status disk_usage root_indicator ram load ip battery time)
 else
-  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir virtualenv vcs)
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon user dir virtualenv vcs custom_github_issues)
   if [ "$USER" = "root" ]; then
     POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status disk_usage root_indicator ram load battery time)
   else
@@ -71,3 +71,9 @@ POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='white'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='red'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
+
+# Custom segment "github issues"
+POWERLEVEL9K_CUSTOM_GITHUB_ISSUES='if [ -e ./.issues ]; then echo "\uF41B $(/bin/cat ./.issues)"; fi'
+POWERLEVEL9K_CUSTOM_GITHUB_ISSUES_BACKGROUND='$POWERLEVEL9K_VCS_CLEAN_BACKGROUND'
+POWERLEVEL9K_CUSTOM_GITHUB_ISSUES_FOREGROUND='$POWERLEVEL9K_VCS_CLEAN_FOREGROUND'
+

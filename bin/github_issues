@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+git_url=$(git remote get-url origin)
+if [[ -d .git ]] && [[ "$git_url" = *'github.com'* ]]; then
+  curl -s "https://api.github.com/repos/$( echo "$git_url" | sed -rn 's/^.*.com\/(.*)$/\1/p')/issues" | jq '. | length'
+fi
+
+

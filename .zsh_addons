@@ -24,6 +24,12 @@ function venv(){
 	source ~/.venv/$1/bin/activate
 }
 
+function autoenv_init()
+{
+	cp ~/.dotfiles/scripts/.autoenv.zsh ./
+	cp ~/.dotfiles/scripts/.autoenv_leave.zsh ./
+}
+
 export EDITOR=~/.dotfiles/bin/editor
 export GPG_TTY=$(tty)
 export PATH=$HOME/local/bin:$PATH
