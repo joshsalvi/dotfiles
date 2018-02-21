@@ -1,11 +1,8 @@
 #!/usr/bin/env zsh
 git_url=$(git remote get-url origin)
+repo=$(echo $( echo "$git_url" | perl -pne 's/^.*.com(?:\/|:)(.*)$/$1/g') | sed 's/.git//')
 if [[ -d .git ]] && [[ "$git_url" = *'github.com'* ]]; then
-  if [ `uname` = "Darwin" ]; then
-    curl -s "https://api.github.com/repos/$( echo "$git_url" | sed -En 's/^.*.com\/(.*)$/\1/p')/issues" | jq '. | length'
-  else
-    curl -s "https://api.github.com/repos/$( echo "$git_url" | sed -rn 's/^.*.com\/(.*)$/\1/p')/issues" | jq '. | length'
-  fi
+    curl -s "https://api.github.com/repos/$repo/issues" | jq '. | length'
 fi
 
 

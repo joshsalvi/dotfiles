@@ -1,3 +1,3 @@
-if [[ -e ./.issues ]]; then
+if [[ -e $OLDPWD/.issues ]]; then
   rm $OLDPWD/.issues
 fi
