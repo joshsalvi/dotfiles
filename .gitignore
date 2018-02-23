@@ -1,3 +1,5 @@
 .nano/
 antigen.zsh
 .issues
+/.autoenv.zsh
+/.autoenv_leave.zsh

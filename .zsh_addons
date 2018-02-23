@@ -6,7 +6,7 @@ if [ "$(which exa)" = "exa not found" ]; then
   alias lsa='ls -lah'
   alias ll='ls -lispa'
 else
-  alias ll='exa -laahF@ --git'
+  alias ll='exa -laahF --git'
   alias l='exa -lah --git'
   alias la='exa -laah --git'
   alias ls='exa'
