@@ -23,6 +23,7 @@ antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
 antigen bundle heroku
+antigen bundle docker
 antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
