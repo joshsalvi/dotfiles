@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 files=( ".zsh_addons" ".zshrc" ".nanorc" ".powerlevelrc" )
-bins=( "editor" "nowplaying" "github_issues" )
+bins=( "editor" "nowplaying" "github_issues" "itunes-track" )
 completions=( "_venv" )
 scripts=( ".autoenv.zsh" ".autoenv_leave.zsh" )
 
