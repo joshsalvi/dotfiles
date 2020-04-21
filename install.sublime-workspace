@@ -3,6 +3,10 @@
 	{
 		"selected_items":
 		[
+			[
+				"str",
+				"str"
+			]
 		]
 	},
 	"buffers":
@@ -19,6 +23,110 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"linter",
+				"SublimeLinter: Toggle Highlights"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"markdown",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"sublimelint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"pylint",
+				"SublimeREPL: Python - Sublime Text Console"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"sublimelin",
+				"SublimeLinter: Goto Error"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"sublimelinter",
+				"SublimeLinter: Reload SublimeLinter and its Plugins"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"sublimlinter",
+				"SublimeLinter: Reload SublimeLinter and its Plugins"
+			],
+			[
+				"bash",
+				"Set Syntax: Bourne Again Shell (bash)"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"toggle",
+				"Emmet: Toggle Comment"
+			],
+			[
+				"python",
+				"Build With: Python"
+			],
+			[
+				"repl",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"sublimerepl",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"",
+				"BracketHighlighter: Swap Brackets"
+			],
+			[
+				"folde",
+				"Project: Add Folder"
+			],
+			[
+				"sidebar",
+				"Side Bar: Refresh"
+			],
+			[
+				"ui",
+				"UI: Select Color Scheme"
+			],
+			[
+				"ui s",
+				"UI: Select Theme"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"theme",
+				"Guna : Tweak Theme"
+			],
+			[
+				"guna",
+				"Guna : Tweak Theme"
+			],
 			[
 				"lyx",
 				"LyX Math: Display Math"
@@ -40,7 +148,7 @@
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 136.0,
 		"history":
 		[
 		]
@@ -57,6 +165,24 @@
 	"file_history":
 	[
 		"/Users/jq210/Documents/GitHub/ocdi_clinical_report/OCDI_redcap_report_generation.py",
+		"/Users/jq210/.bashrc",
+		"/Users/jq210/.zshrc",
+		"/Users/jq210/Documents/GitHub/dotfiles/zshrc",
+		"/Users/jq210/opt/anaconda3/lib/python3.7/PDE_FIND.py",
+		"/Users/jq210/Documents/GitHub/pydstool/examples/CIN.py",
+		"/Users/jq210/Documents/GitHub/process_edw_sourcedata/edw.py",
+		"/Users/jq210/Documents/GitHub/bakerlab_sandbox/OCAR_loop.sh",
+		"/Users/jq210/.oh-my-zsh/plugins/git/README.md",
+		"/Users/jq210/.bash_profile",
+		"/Users/jq210/opt/anaconda2/lib/python2.7/site-packages/PyDSTool-0.90.0-py2.7.egg/PyDSTool/__init__.py",
+		"/Users/jq210/Documents/GitHub/pynamical/README.md",
+		"/Users/jq210/Library/Application Support/Sublime Text 3/Packages/Pylinter/Default (OSX).sublime-keymap",
+		"/Users/jq210/Library/Application Support/Sublime Text 3/Packages/Pylinter/Pylinter.sublime-settings",
+		"/Users/jq210/Library/Application Support/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/Users/jq210/Documents/GitHub/bakerlab_sandbox/OCARtoOCDPCS.sh",
+		"/Users/jq210/Documents/GitHub/bakerlab_sandbox/convert_to_dpdash.py",
+		"/Users/jq210/Documents/GitHub/iterm2config/dynmotd",
+		"/Users/jq210/Documents/GitHub/iterm2config/.bashrc",
 		"/Users/jq210/Documents/GitHub/Misc/ SelectAdmissionNote_McLean_Single_FINAL.py",
 		"/Users/jq210/Documents/GitHub/iterm2config/.bash_profile",
 		"/Users/jq210/Documents/GitHub/iterm2config/.zshrc",
@@ -65,7 +191,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -79,8 +205,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"scipy",
+			"print",
+			"activedir"
 		],
-		"highlight": true,
+		"highlight": false,
 		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
@@ -134,11 +263,19 @@
 	"menu_visible": true,
 	"output.SublimeLinter":
 	{
-		"height": 0.0
+		"height": 109.0
+	},
+	"output.exec":
+	{
+		"height": 109.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 109.0
 	},
 	"pinned_build_system": "",
 	"project": "install.sublime-project",
@@ -162,6 +299,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"~/Documents/GitHub/dotfiles/install.sublime-workspace"
+			]
 		],
 		"width": 380.0
 	},

@@ -58,7 +58,7 @@ DISABLE_UPDATE_PROMPT="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -82,7 +82,11 @@ DISABLE_UPDATE_PROMPT="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sublime)
+plugins=(
+  git
+  sublime
+  osx
+  )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -145,34 +149,35 @@ if [[ $OSTYPE = (darwin)* ]]; then
     zplug "plugins/macports", from:oh-my-zsh, if:"which port"
 fi
 
-zplug "plugins/archlinux", from:oh-my-zsh
-zplug "plugins/common-aliase", from:oh-my-zsh
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/colorize", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "plugins/copydir", from:oh-my-zsh
-zplug "plugins/copyfile", from:oh-my-zsh
-zplug "plugins/cp", from:oh-my-zsh
-zplug "plugins/dircycle", from:oh-my-zsh
-zplug "plugins/encode64", from:oh-my-zsh
-zplug "plugins/extract", from:oh-my-zsh
-zplug "plugins/history", from:oh-my-zsh
-zplug "plugins/nmap",   from:oh-my-zsh
-zplug "plugins/tmux", from:oh-my-zsh
-zplug "plugins/tmuxinator", from:oh-my-zsh
-zplug "plugins/urltools", from:oh-my-zsh
-zplug "plugins/web-search", from:oh-my-zsh
-zplug "plugins/z", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/go", from:oh-my-zsh
-zplug "plugins/svn", from:oh-my-zsh
-zplug "plugins/node", from:oh-my-zsh
-zplug "plugins/npm", from:oh-my-zsh
-zplug "plugins/bundler", from:oh-my-zsh
-zplug "plugins/gem", from:oh-my-zsh
-zplug "plugins/rbenv", from:oh-my-zsh
-zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
+# Zplug plugins
+# zplug "plugins/archlinux", from:oh-my-zsh
+# zplug "plugins/common-aliase", from:oh-my-zsh
+# zplug "plugins/colored-man-pages", from:oh-my-zsh
+# zplug "plugins/colorize", from:oh-my-zsh
+# zplug "plugins/command-not-found", from:oh-my-zsh
+# zplug "plugins/copydir", from:oh-my-zsh
+# zplug "plugins/copyfile", from:oh-my-zsh
+# zplug "plugins/cp", from:oh-my-zsh
+# zplug "plugins/dircycle", from:oh-my-zsh
+# zplug "plugins/encode64", from:oh-my-zsh
+# zplug "plugins/extract", from:oh-my-zsh
+# zplug "plugins/history", from:oh-my-zsh
+# zplug "plugins/nmap",   from:oh-my-zsh
+# zplug "plugins/tmux", from:oh-my-zsh
+# zplug "plugins/tmuxinator", from:oh-my-zsh
+# zplug "plugins/urltools", from:oh-my-zsh
+# zplug "plugins/web-search", from:oh-my-zsh
+# zplug "plugins/z", from:oh-my-zsh
+# zplug "plugins/git", from:oh-my-zsh
+# zplug "plugins/go", from:oh-my-zsh
+# zplug "plugins/svn", from:oh-my-zsh
+# zplug "plugins/node", from:oh-my-zsh
+# zplug "plugins/npm", from:oh-my-zsh
+# zplug "plugins/bundler", from:oh-my-zsh
+# zplug "plugins/gem", from:oh-my-zsh
+# zplug "plugins/rbenv", from:oh-my-zsh
+# zplug "plugins/pip", from:oh-my-zsh
+# zplug "plugins/sudo", from:oh-my-zsh
 
 # Enhanced cd
 zplug "b4b4r07/enhancd", use:enhancd.sh
@@ -252,6 +257,8 @@ alias grep='() { $(whence -p grep) --color=auto $@ }'
 alias egrep='() { $(whence -p egrep) --color=auto $@ }'
 
 # Directory management
+alias ls='colorls' # With colorls
+alias lc='colorls -lA --sd' # With colorls
 alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
@@ -302,7 +309,7 @@ alias conda2=/Users/jq210/opt/anaconda2/bin/conda
 # PATH=\$HOME/miniconda3/bin:\$PATH
 # END
 source $HOME/.bashrc
-
+source /Users/jq210/Documents/GitHub/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # =============================================================================
 #                                Anaconda Init
@@ -356,6 +363,3 @@ clear
 # php -f /etc/dynmotd | bash
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
-
