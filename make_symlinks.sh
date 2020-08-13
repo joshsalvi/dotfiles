@@ -6,9 +6,9 @@
 
 ########## Variables
 
-dir=/Users/jq210/Documents/GitHub/dotfiles/dotfiles             # dotfiles directory
-olddir=/Users/jq210/Documents/GitHub/dotfiles/dotfiles_old      # old dotfiles backup directory
-files=("bashrc" "vimrc" "zshrc")                            # list of files/folders to symlink in homedir
+dir=/Users/jq210/Documents/GitHub/dotfiles/dotfiles 			# dotfiles directory
+olddir=/Users/jq210/Documents/GitHub/dotfiles/dotfiles_old 		# old dotfiles backup directory
+files=("bashrc" "vimrc" "zshrc")    						# list of files/folders to symlink in homedir
 
 ##########
 

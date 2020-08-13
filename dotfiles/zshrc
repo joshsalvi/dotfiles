@@ -1,6 +1,20 @@
-# =============================================================================
-#                                ZSH Config
-# =============================================================================
+# =========================================================================== #
+#                                                                             #
+#         **  ********    -----------------                                   #
+#        /** **//////     ZSH configuration                                   #
+#        /**/**           -----------------                                   #
+#        /**/*********                                                        #
+#        /**////////**    Created by:                                         #
+#    **  /**       /**    Joshua Salvi                                        #
+#   //*****  ********     josh DOT salvi AT gmail DOT com                     #
+#    /////  ////////                                                          #
+#                                                                             #
+# =========================================================================== #
+
+
+# =========================================================================== #
+#                                ZSH configuration                            #
+# =========================================================================== #
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -76,7 +90,6 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -92,6 +105,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Disable gitstatus
+GITSTATUS_DAEMON=~/powerlevel10k/gitstatus/bin/gitstatusd-linux-x86_64-static
+POWERLEVEL9K_DISABLE_GITSTATUS=true
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -120,9 +136,9 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# =============================================================================
-#                                   Plugins
-# =============================================================================
+# =========================================================================== #
+#                                   Plugins                                   #
+# =========================================================================== #
 
 # Check if zplug is installed
 [ ! -d ~/.zplug ] && git clone https://github.com/zplug/zplug ~/.zplug
@@ -204,9 +220,10 @@ zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 
-# =============================================================================
-#                                   Options
-# =============================================================================
+
+# =========================================================================== #
+#                                   Options                                   #
+# =========================================================================== #
 
 # Improved LESS option
 export LESS="--tabs=4 --no-init --LONG-PROMPT --ignore-case --quit-if-one-screen --RAW-CONTROL-CHARS"
@@ -240,13 +257,16 @@ setopt pushd_minus              # Reference stack entries with "-".
 setopt extended_glob
 
 
-# =============================================================================
-#                                   Aliases
-# =============================================================================
+# =========================================================================== #
+#                                   Aliases                                   #
+# =========================================================================== #
 
 # SSH
 alias sshnmr="echo "Connecting\ to\ NMR..." &&ssh jq210@door.nmr.mgh.harvard.edu"
 alias ssheris="echo "Connecting\ to\ server\ ERISone..." && ssh jq210@erisone.partners.org"
+alias sshtolstoy="echo "Connecting\ to\ server\ Tolstoy..." && ssh jq210@tolstoy.dipr.partners.org"
+alias sshdpdash="echo "Connecting\ to\ server\ DPDash..." && ssh jq210@dpdash.dipr.partners.org"
+alias sshomv="echo "Connecting\ to\ OMV\ Server..." && ssh root@192.168.1.178"
 
 # Helper commands
 alias rm='rm -v'
@@ -257,12 +277,19 @@ alias grep='() { $(whence -p grep) --color=auto $@ }'
 alias egrep='() { $(whence -p egrep) --color=auto $@ }'
 
 # Directory management
-alias ls='colorls' # With colorls
+alias ls='colorls --sd' # With colorls
 alias lc='colorls -lA --sd' # With colorls
 alias la='ls -a'
 alias ll='ls -l'
+# alias lg='ls -l --block-size=G'
+# alias llg='ls -l --block-size=G'
+# alias lalg='ls -al --block-size=G'
+# alias lltg='ls -lt --block-size=G'
+alias lt='ls -lt'
 alias lal='ls -al'
 alias llt='ls -alt'
+alias lltr='ls -altr'
+alias ltr='ls -tr'
 alias lalt='ls -alt'
 alias d='dirs -v'
 alias p='pushd'
@@ -272,6 +299,7 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
+alias 'bk=cd $OLDPWD' # go back to last directory
 
 # Miscellaneous
 alias hs='history | grep' # search through terminal history "hs <search>"
@@ -281,11 +309,12 @@ alias svim='sudo vim' # open file with admin access
 alias bc='bc -l' # start calculator with math support
 alias h='history' # command history
 alias wget='wget -c' # wget that will resume partial downloads
-
+alias rsync=/usr/local/bin/rsync
 
 # Update
 # alias update="apt-get update && apt-get upgrade && apt-get dist-upgrade"
 alias update="sudo softwareupdate -ia"
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 
 # Python 2
 alias python2=/Users/jq210/opt/anaconda2/bin/python
@@ -294,15 +323,40 @@ alias jupyter2=/Users/jq210/opt/anaconda2/bin/jupyter
 alias conda2=/Users/jq210/opt/anaconda2/bin/conda
 
 # Python 3
-# alias python=/Users/jq210/opt/anaconda3/bin/python
-# alias pip=/Users/jq210/opt/anaconda3/bin/pip
-# alias jupyter=/Users/jq210/opt/anaconda3/bin/jupyter
-# alias conda=/Users/jq210/opt/anaconda3/bin/conda
+alias python3=/Users/jq210/opt/anaconda3/bin/python
+alias pip3=/Users/jq210/opt/anaconda3/bin/pip
+alias jupyter3=/Users/jq210/opt/anaconda3/bin/jupyter
+alias conda3=/Users/jq210/opt/anaconda3/bin/conda
+
+# Weather 
+alias weather="curl http://wttr.in/boston"
+
+# Welcome messages
+alias archey='clear && archey -c'
+alias screenfetch='clear && screenfetch -E'
 
 
-# =============================================================================
-#                                   Sources
-# =============================================================================
+
+# =========================================================================== #
+#                                Key Bindings                                 #
+# =========================================================================== #
+
+# Line navigation
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^K" kill-line
+bindkey "^R" history-incremental-search-backward
+bindkey "^P" history-search-backward
+bindkey "^Y" accept-and-hold
+bindkey "^N" insert-last-word
+bindkey "^Q" push-line-or-edit
+bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
+
+
+
+# =========================================================================== #
+#                                   Sources                                   #
+# =========================================================================== #
 
 # export PATH="$HOME/anaconda2/bin:$PATH"
 # cat >> ~/.bashrc << END
@@ -311,9 +365,11 @@ alias conda2=/Users/jq210/opt/anaconda2/bin/conda
 source $HOME/.bashrc
 source /Users/jq210/Documents/GitHub/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# =============================================================================
-#                                Anaconda Init
-# =============================================================================
+
+
+# =========================================================================== #
+#                                Anaconda Init                                #
+# =========================================================================== #
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -331,9 +387,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-# =============================================================================
-#                                 Completions
-# =============================================================================
+
+# =========================================================================== #
+#                                 Completions                                 #
+# =========================================================================== #
 
 zstyle ':completion:*' rehash true
 
@@ -346,9 +403,10 @@ zstyle ":completion:*" matcher-list \
 zstyle ":completion:*:default" list-colors ${(s.:.)LS_COLORS}
 
 
-# =============================================================================
-#                              Startup commands
-# =============================================================================
+
+# =========================================================================== #
+#                              Startup commands                               #
+# =========================================================================== #
 
 #export {CC,CXX,MPICXX}=/usr/local/bin/gcc-6
 alias gcc="gcc-7"
@@ -356,10 +414,20 @@ export CC=/usr/local/bin/gcc-7
 export CXX=/usr/local/bin/g++-7
 # source activate moseq2
 # fast-theme free
-
+echo "Loading ZSH . . ."
 clear
 
 # Dynamic MOTD
 # php -f /etc/dynmotd | bash
 
+# Display welcome message
+archey -c
+# screenfetch -E
+# echo "   Welcome to your terminal . . ."
+# echo " "
+
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# cat >> ~/.bashrc << END
+# PATH=\$HOME/miniconda3/bin:\$PATH
+# END
+# source $HOME/.bashrcexport PATH="/usr/local/sbin:$PATH"

@@ -1,0 +1,53 @@
+"----------General------------
+syntax on
+packadd! dracula_pro
+syntax enable
+
+
+"-----------Colors------------
+let g:dracula_colorterm = 0
+colorscheme dracula_pro
+"colorscheme molokai
+
+
+"---------Statusline----------
+set statusline=%=\ %f\ %m
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+set laststatus=2
+set noshowmode
+
+
+"--------Indentation----------
+set autoindent			"New lines inherit the indentation of previous lines
+set filetype indent on 	"Enable indentation rules that are file-type specific
+
+
+"--------Text-Rendering----------
+set linebreak			"Avoid wrapping a line in the middle of a word
+set wrap 				"Enable line wrapping
+
+
+"-----------Search------------  
+set hlsearch       		"Highlight search term 
+set incsearch     		"Incremental highlight term
+
+
+"----------Mappings-----------
+"Open .vimrc by ,ev
+nmap <Leader>ev :tabedit $MYVIMRC<cr>
+"Deselect search highlight by , <space>
+nmap <Leader><space> :nohlsearch<cr>
+"Toggle NERDTree by ,n
+nmap <Leader>n :NERDTreeToggle<cr>
+
+
+"--------Auto-commmands-------
+"Automatically source the .vimrc file on save.
+augroup autosourcing
+  autocmd!
+  autocmd BufWritePost .vimrc source %
+augroup END
+
+"Opens NERDTree if no file specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
