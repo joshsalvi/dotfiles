@@ -1,3 +1,20 @@
+# =========================================================================== #
+#                                                                             #
+#         **  ********    -----------------                                   #
+#        /** **//////     Bash configuration                                  #
+#        /**/**           -----------------                                   #
+#        /**/*********                                                        #
+#        /**////////**    Created by:                                         #
+#    **  /**       /**    Joshua Salvi                                        #
+#   //*****  ********     josh DOT salvi AT gmail DOT com                     #
+#    /////  ////////                                                          #
+#                                                                             #
+# =========================================================================== #
+
+
+# ============================================================================= #
+#                                   Visual 									    #
+# ============================================================================= #
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -5,10 +22,31 @@
 ## --- Stylize command prompt
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 # eval "`dircolors -b`"
+[[ $- == *i* ]] || return  # non-interactive shell
 
-# =============================================================================
-#                                   Aliases
-# =============================================================================
+export LS_COLORS='rs=0:no=00:mi=00:mh=00:ln=01;36:or=01;31:di=01;34:ow=04;01;34:st=34:tw=04;34:'
+LS_COLORS+='pi=01;33:so=01;33:do=01;33:bd=01;33:cd=01;33:su=01;35:sg=01;35:ca=01;35:ex=01;32:'
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s globstar
+
+if command -v lesspipe &>/dev/null; then
+  export LESSOPEN="| /usr/bin/env lesspipe %s 2>&-"
+fi
+
+# ============================================================================= #
+#                                   History 								    #
+# ============================================================================= #
+HISTCONTROL=ignoreboth
+HISTSIZE=1000000000
+HISTFILESIZE=1000000000
+HISTFILE="$HOME"/.bash_history
+
+
+# ============================================================================= #
+#                                   Aliases								        #
+# ============================================================================= #
 
 # Sudo
 alias sudo='sudo '
@@ -26,6 +64,7 @@ alias grep='() { $(whence -p grep) --color=auto $@ }'
 alias egrep='() { $(whence -p egrep) --color=auto $@ }'
 
 # Directory management
+alias ls='colorls'
 alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
@@ -34,11 +73,20 @@ alias lalt='ls -alt'
 alias d='dirs -v'
 alias p='pushd'
 alias could=''
+alias diff='diff --color=auto'
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+alias clang-format='clang-format -style=file'
+alias tree='tree -aC -I .git --dirsfirst'
+alias gedit='gedit &>/dev/null'
 
 # Update
-# alias update="apt-get update && apt-get upgrade && apt-get dist-upgrade"
 alias update="sudo softwareupdate -ia"
 
 
 PATH=$HOME/miniconda3/bin:$PATH
 
+# ============================================================================= #
+#                               Source/Startup							        #
+# ============================================================================= #
+
+source /usr/local/opt/gitstatus/gitstatus.prompt.sh

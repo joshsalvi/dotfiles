@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
@@ -8,8 +8,9 @@
 
 dir=/Users/jq210/Documents/GitHub/dotfiles/dotfiles             # dotfiles directory
 olddir=/Users/jq210/Documents/GitHub/dotfiles/dotfiles_old      # old dotfiles backup directory
-files=("bashrc" "vimrc" "zshrc")                            # list of files/folders to symlink in homedir
-
+files=("zlogin" "bashrc" "vimrc" "zshrc" "p10k.zsh" "zshenv")   # list of files/folders to symlink in homedir
+echo "Will import the following files:"
+echo $files
 ##########
 
 # create dotfiles_old in homedir
@@ -25,7 +26,7 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv ~/.$file $olddir/$file
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done

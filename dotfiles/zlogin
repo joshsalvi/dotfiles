@@ -1,0 +1,31 @@
+# =========================================================================== #
+#                                                                             #
+#         **  ********    -----------------                                   #
+#        /** **//////     ZSH login config                                    #
+#        /**/**           -----------------                                   #
+#        /**/*********                                                        #
+#        /**////////**    Created by:                                         #
+#    **  /**       /**    Joshua Salvi                                        #
+#   //*****  ********     josh DOT salvi AT gmail DOT com                     #
+#    /////  ////////                                                          #
+#                                                                             #
+# =========================================================================== #
+
+# =========================================================================== #
+#                              Startup commands                               #
+# =========================================================================== #
+
+#export {CC,CXX,MPICXX}=/usr/local/bin/gcc-6
+# alias gcc="gcc-7"
+# export CC=/usr/local/bin/gcc-7
+# export CXX=/usr/local/bin/g++-7
+# # source activate moseq2
+# # fast-theme free
+# echo "Loading ZSH . . ."
+# clear
+
+# # Dynamic MOTD
+# # php -f /etc/dynmotd | bash
+
+# # Display welcome message
+# archey -c
