@@ -98,6 +98,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
   sublime
   osx
+  sudo
+  rsync
   )
 
 source $ZSH/oh-my-zsh.sh
@@ -268,7 +270,7 @@ alias sshdpdash="echo "Connecting\ to\ server\ DPDash..." && ssh jq210@dpdash.di
 alias sshomv="echo "Connecting\ to\ OMV\ Server..." && ssh root@192.168.1.178"
 
 # Helper commands
-alias rm='rmtrash -v'
+alias rm='rmtrash'
 alias c='clear'
 
 # Generic command adaptations
@@ -303,6 +305,7 @@ alias elt='els -lt'
 
 # Miscellaneous
 alias hs='history | grep'                           # search through terminal history "hs <search>"
+alias hsr='history | grep . | tail -n'              # search through terminal history, display N results "hs N"
 alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo '  # make directory, enter directory 
 alias myip="curl http://ipecho.net/plain; echo"     # show IP address
 alias svim='sudo vim'                               # open file with admin access
@@ -363,7 +366,7 @@ bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 # cat >> ~/.bashrc << END
 # PATH=\$HOME/miniconda3/bin:\$PATH
 # END
-source $HOME/.bashrc
+# source $HOME/.bashrc
 source /Users/jq210/Documents/GitHub/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
@@ -387,6 +390,18 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+
+# =========================================================================== #
+#                             Virtual Environments                            #
+# =========================================================================== #
+
+# Activate virtual environments
+alias moseq2-env="echo "Activating\ MoSeq2\ virtual\ environment..." && cd ~/opt/anaconda3/envs/ && source activate moseq2"
+alias mne-env="echo "Activating\ MNE\ virtual\ environment..." && cd ~/opt/anaconda3/envs/ && source activate mne"
+
+# Deactivate with conda
+alias deactivate="conda deactivate"
 
 
 # =========================================================================== #
@@ -433,4 +448,4 @@ archey -c
 # END
 # source $HOME/.bashrcexport PATH="/usr/local/sbin:$PATH"
 
-
+export PATH="/usr/local/sbin:$PATH"
